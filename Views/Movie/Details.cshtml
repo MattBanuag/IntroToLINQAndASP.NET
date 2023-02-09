@@ -1,0 +1,23 @@
+﻿@model Movie;
+
+@if(Model == null) {
+    <h2 class="text-danger">Movie could not be found.</h2>
+} else {
+    <h2>@ViewBag.PageTitle</h2>
+
+    <ul class="list-group">
+        <h5 class="list-group-item text-primary"><b>@Model.Title</b></h5>
+        <li class="list-group-item"><b>Genre:</b> @Model.Genre</li>
+        <li class="list-group-item"><b>Rating:</b> To be added...</li>
+        <li class="list-group-item">
+            <b>Starring:</b>
+            @foreach (Actor actor in Model.GetActors())
+            {
+                <i>@actor.Name</i>
+            }
+        </li>
+        <li class="list-group-item"><b>Production Date:</b> @Model.ProductionDate</li>
+        <li class="list-group-item"><b>Budget(EST):</b> $@Model.Budget</li>
+    </ul>
+    <br/>
+}
