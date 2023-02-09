@@ -35,7 +35,6 @@ namespace LAB_01.Controllers
                     return m.Genre.ToString().Equals(genre, StringComparison.OrdinalIgnoreCase);
                 }).ToHashSet();
 
-                ViewBag.MovieCount = moviesInGenre.Count;
                 ViewBag.PageTitle = $"Movies in {genre}";
 
                 return View("Index", moviesInGenre);
