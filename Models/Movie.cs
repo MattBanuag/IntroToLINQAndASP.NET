@@ -25,15 +25,15 @@ namespace LAB_01.Models
 
         public DateTime ProductionDate { get; set; }
 
-        private int _budgetInMillions;
-        public int BudgetInMillions 
+        private int _budget;
+        public int Budget 
         { 
-            get { return _budgetInMillions; } 
+            get { return _budget; } 
             set
             {
                 if(value != 0 && value > 0)
                 {
-                    _budgetInMillions = value;
+                    _budget = value;
                 } else
                 {
                     throw new Exception("Movie budget cannot be zero or less.");
@@ -73,12 +73,12 @@ namespace LAB_01.Models
 
         }
 
-        public Movie(int id, string title, DateTime productionDate, int budgetInMillions)
+        public Movie(int id, string title, DateTime productionDate, int budget)
         {
             _id = id;
             Title = title;
             ProductionDate = productionDate;    
-            BudgetInMillions = budgetInMillions;
+            Budget = budget;
         }
     }
 }
