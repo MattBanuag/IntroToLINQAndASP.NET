@@ -20,12 +20,12 @@
                         if (ratings.Any())
                         {
                             <i>
-                                @decimal.Round(ratings.Average(r => (decimal)r.Score),2);
+                                @decimal.Round(ratings.Average(r => (decimal)r.Score),2) / 10
                             </i>
                         }
                         else
                         {
-                            <i>Not Available</i>
+                            <i>No Ratings</i>
                         }
                     }
                 </li>
