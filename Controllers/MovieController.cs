@@ -56,5 +56,15 @@ namespace LAB_01.Controllers
             return View("Index", movies);
         }
 
+        public IActionResult GetMoviesInNineties(int year)
+        {
+            ViewBag.PageTitle = "Movies in the 90s";
+            HashSet<Movie> movies = Context.Movies.Where(m =>
+            {
+                return m.ProductionDate.Year == year;
+            }).ToHashSet();
+
+            return View("Index", movies);
+        }
     }
 }
