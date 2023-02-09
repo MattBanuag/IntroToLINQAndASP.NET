@@ -72,6 +72,10 @@ namespace LAB_01.Data
             user3.AddRating(rating3);
             user2.AddRating(rating4);
 
+            movie3.AddRating(rating1);
+            movie3.AddRating(rating2);
+            movie4.AddRating(rating3);
+            movie4.AddRating(rating4);
         }
 
         static Context()

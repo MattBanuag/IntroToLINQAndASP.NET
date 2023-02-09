@@ -8,7 +8,23 @@
     <ul class="list-group">
         <h5 class="list-group-item text-primary"><b>@Model.Title</b></h5>
         <li class="list-group-item"><b>Genre:</b> @Model.Genre</li>
-        <li class="list-group-item"><b>Rating:</b> To be added...</li>
+        <li class="list-group-item">
+            <b>Rating:</b>
+            @{
+                HashSet<Rating> ratings = Model.GetRatings();
+
+                if (ratings.Any())
+                {
+                    <i>
+                        @decimal.Round(ratings.Average(r => (decimal)r.Score),2);
+                    </i>
+                }
+                else
+                {
+                    <i>Not Available</i>
+                }
+            }
+        </li>
         <li class="list-group-item">
             <b>Starring:</b>
             @foreach (Actor actor in Model.GetActors())
