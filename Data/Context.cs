@@ -6,8 +6,12 @@ namespace LAB_01.Data
     {
         public static HashSet<Movie> Movies = new HashSet<Movie>();
         public static HashSet<Actor> Actors = new HashSet<Actor>();
+        public static HashSet<User> Users = new HashSet<User>();
+
         private static int _movieIdCounter = 0;
         private static int _actorIdCounter = 0;
+        private static int _userIdCounter = 0;
+
         private static void _seedMethod()
         {
             // === SEED MOVIES
@@ -42,6 +46,14 @@ namespace LAB_01.Data
             movie3.AddActor(actor3);
             movie4.AddActor(actor4);
 
+            // === SEED USERS
+            User user1 = new User(_userIdCounter++, "UnicornMan23");
+            User user2 = new User(_userIdCounter++, "CoolJake");
+            User user3 = new User(_userIdCounter++, "ShadowLord007");
+
+            Users.Add(user1);
+            Users.Add(user2);
+            Users.Add(user3);
 
         }
 
