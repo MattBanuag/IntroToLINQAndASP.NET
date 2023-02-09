@@ -12,6 +12,16 @@ namespace LAB_01.Controllers
             return View(Context.Movies);
         }
 
+        public IActionResult GetMovieInfo(string title)
+        {
+            Movie movie = Context.Movies.First(m =>
+            {
+                // Using 'Equals' to ignore case
+                return m.Title.Equals(title);
+            }); 
 
+            ViewBag.PageTitle = movie.Title;    
+            return View("Details", movie);
+        }
     }
 }

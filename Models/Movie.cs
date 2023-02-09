@@ -41,7 +41,7 @@ namespace LAB_01.Models
             }
         }
         
-        //public Genres Genre { get; set; }
+        public Genres Genre { get; set; }
 
         private HashSet<Rating> _ratings = new HashSet<Rating>();
         private HashSet<Actor> _actors = new HashSet<Actor>();
@@ -73,12 +73,13 @@ namespace LAB_01.Models
 
         }
 
-        public Movie(int id, string title, DateTime productionDate, int budget)
+        public Movie(int id, string title, DateTime productionDate, int budget, Genres genre)
         {
             _id = id;
             Title = title;
             ProductionDate = productionDate;    
             Budget = budget;
+            Genre = genre;
         }
     }
 }

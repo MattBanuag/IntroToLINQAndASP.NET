@@ -16,10 +16,10 @@ namespace LAB_01.Data
         private static void _seedMethod()
         {
             // === SEED MOVIES
-            Movie movie1 = new Movie(_movieIdCounter++, "Braveheart", new DateTime(2000, 5, 24), 65_000_000);
-            Movie movie2 = new Movie(_movieIdCounter++, "Forrest Gump", new DateTime(1994, 7, 6), 55_000_000);
-            Movie movie3 = new Movie(_movieIdCounter++, "Taken", new DateTime(2009, 1, 30), 25_000_000);
-            Movie movie4 = new Movie(_movieIdCounter++, "The Goonies", new DateTime(1985, 6, 9), 19_000_000);
+            Movie movie1 = new Movie(_movieIdCounter++, "Braveheart", new DateTime(2000, 5, 24), 65_000_000, Genres.Action);
+            Movie movie2 = new Movie(_movieIdCounter++, "Forrest Gump", new DateTime(1994, 7, 6), 55_000_000, Genres.Drama);
+            Movie movie3 = new Movie(_movieIdCounter++, "Taken", new DateTime(2009, 1, 30), 25_000_000, Genres.Action);
+            Movie movie4 = new Movie(_movieIdCounter++, "The Goonies", new DateTime(1985, 6, 9), 19_000_000, Genres.Comedy);
 
             Movies.Add(movie1);
             Movies.Add(movie2);
