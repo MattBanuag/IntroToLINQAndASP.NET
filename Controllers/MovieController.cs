@@ -46,5 +46,16 @@ namespace LAB_01.Controllers
             }
         }
 
+        public IActionResult GetMoviesInBudget(int lower, int upper)
+        {
+            ViewBag.PageTitle = $"Movies with ${lower} to ${upper} in budget.";
+            HashSet<Movie> movies = Context.Movies.Where(m =>
+            {
+                return m.Budget >= lower && m.Budget <= upper;
+            }).ToHashSet();
+
+            return View("Index", movies);
+        }
+
     }
 }
