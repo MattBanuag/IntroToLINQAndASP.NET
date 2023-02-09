@@ -7,10 +7,11 @@ namespace LAB_01.Data
         public static HashSet<Movie> Movies = new HashSet<Movie>();
         public static HashSet<Actor> Actors = new HashSet<Actor>();
         public static HashSet<User> Users = new HashSet<User>();
-
+        public static HashSet<Rating> Ratings = new HashSet<Rating>();
         private static int _movieIdCounter = 0;
         private static int _actorIdCounter = 0;
         private static int _userIdCounter = 0;
+        private static int _ratingIdCounter = 0;
 
         private static void _seedMethod()
         {
@@ -54,6 +55,22 @@ namespace LAB_01.Data
             Users.Add(user1);
             Users.Add(user2);
             Users.Add(user3);
+
+            // === SEED RATINGS
+            Rating rating1 = new Rating(_ratingIdCounter++, 8, user1, movie3);
+            Rating rating2 = new Rating(_ratingIdCounter++, 7, user2, movie3);
+            Rating rating3 = new Rating(_ratingIdCounter++, 6, user3, movie4);
+            Rating rating4 = new Rating(_ratingIdCounter++, 8, user2, movie4);
+
+            Ratings.Add(rating1);
+            Ratings.Add(rating2);
+            Ratings.Add(rating3);
+            Ratings.Add(rating4);
+
+            user1.AddRating(rating1);
+            user2.AddRating(rating2);
+            user3.AddRating(rating3);
+            user2.AddRating(rating4);
 
         }
 
