@@ -10,12 +10,12 @@ namespace LAB_01.Models
         private string _name;
         public string Name 
         { 
-            get { return _actorName; } 
+            get { return _name; } 
             set
             {
                 if(value.Length > 0)
                 {
-                    _actorName = value;
+                    _name = value;
                 } else
                 {
                     throw new Exception("Actor's name cannot have a length of zero.");

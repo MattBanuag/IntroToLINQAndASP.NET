@@ -79,4 +79,15 @@ namespace LAB_01.Data
             _seedMethod();
         }
     }
+
+    public enum Genres
+    {
+        Action,
+        Horror,
+        Comedy,
+        Drama,
+        Documentary,
+        Romance,
+        Fantasy
+    }
 }
