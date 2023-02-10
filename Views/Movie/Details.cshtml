@@ -36,4 +36,14 @@
         <li class="list-group-item"><b>Budget(EST):</b> $@Model.Budget</li>
     </ul>
     <br/>
+
+    <h3>Ratings and comments from other users</h3>
+    @foreach (Rating rating in Model.GetRatings())
+    {
+            <b>@rating.Score / 10</b> 
+            <i> ~ "@rating.Comment"</i>
+            <p/>
+    }
+
+    <button asp-controller="Rating" asp-action="Add Rating" class="btn-success">Add a rating</button>   
 }

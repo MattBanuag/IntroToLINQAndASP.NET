@@ -60,10 +60,10 @@ namespace LAB_01.Data
             Users.Add(user3);
 
             // === SEED RATINGS
-            Rating rating1 = new Rating(_ratingIdCounter++, 8, user1, movie3);
-            Rating rating2 = new Rating(_ratingIdCounter++, 7, user2, movie3);
-            Rating rating3 = new Rating(_ratingIdCounter++, 6, user3, movie4);
-            Rating rating4 = new Rating(_ratingIdCounter++, 8, user2, movie4);
+            Rating rating1 = new Rating(_ratingIdCounter++, 8, user1, movie3, "Great movie!");
+            Rating rating2 = new Rating(_ratingIdCounter++, 7, user2, movie3, "Makes my heart melt!");
+            Rating rating3 = new Rating(_ratingIdCounter++, 6, user3, movie4, "Action packed and thrilling!");
+            Rating rating4 = new Rating(_ratingIdCounter++, 8, user2, movie4, "Awesome family movie");
 
             Ratings.Add(rating1);
             Ratings.Add(rating2);

@@ -23,16 +23,33 @@ namespace LAB_01.Models
             }
         }
 
+        private string _comment;
+        public string Comment
+        {
+            get { return _comment; }
+            set
+            {
+                if(value.Length != 0)
+                {
+                    _comment = value;
+                } else
+                {
+                    throw new Exception("Comment cannot be empty");
+                }
+            }
+        }
+
         private HashSet<User> _users = new HashSet<User>();
         private HashSet<Movie> _movies = new HashSet<Movie>();
 
         // === CONSTRUCTORS
-        public Rating(int id, int score, User user, Movie movie)
+        public Rating(int id, int score, User user, Movie movie, string comment)
         {
             _id = id;
             Score = score;
             _users.Add(user);
             _movies.Add(movie);
+            Comment = comment;
         }
     }
 }
