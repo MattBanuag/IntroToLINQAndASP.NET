@@ -45,5 +45,8 @@
             <p/>
     }
 
-    <button asp-controller="Rating" asp-action="Add Rating" class="btn-success">Add a rating</button>   
+    <form asp-controller="Rating" asp-action="Create" method="GET">
+        <button type="submit" class="btn-success">Add a rating</button>
+    </form>
+      
 }
