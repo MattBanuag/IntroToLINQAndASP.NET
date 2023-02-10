@@ -15,5 +15,15 @@ namespace LAB_01.Controllers
             }).ToHashSet();
             return View(actors);
         }
+
+        public IActionResult Details(int id)
+        {
+            Actor actor = Context.Actors.First(a =>
+            {
+                return a.Id == id;
+            });
+
+            return View();
+        }
     }
 }
