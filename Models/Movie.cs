@@ -45,8 +45,19 @@ namespace LAB_01.Models
 
         private HashSet<Rating> _ratings = new HashSet<Rating>();
         private HashSet<Actor> _actors = new HashSet<Actor>();
+        private HashSet<Role> _roles = new HashSet<Role>();
 
         // === METHODS
+        public HashSet<Role> GetRoles()
+        {
+            return _roles.ToHashSet();
+        }
+
+        public void AddRole(Role role)
+        {
+            _roles.Add(role);
+        }
+
         public HashSet<Rating> GetRatings()
         {
             return _ratings.ToHashSet();

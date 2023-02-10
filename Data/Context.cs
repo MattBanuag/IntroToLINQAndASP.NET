@@ -8,10 +8,13 @@ namespace LAB_01.Data
         public static HashSet<Actor> Actors = new HashSet<Actor>();
         public static HashSet<User> Users = new HashSet<User>();
         public static HashSet<Rating> Ratings = new HashSet<Rating>();
+        public static HashSet<Role> Roles = new HashSet<Role>();
+
         private static int _movieIdCounter = 0;
         private static int _actorIdCounter = 0;
         private static int _userIdCounter = 0;
         private static int _ratingIdCounter = 0;
+        private static int _roleIdCounter = 0;
 
         private static void _seedMethod()
         {
@@ -76,6 +79,28 @@ namespace LAB_01.Data
             movie3.AddRating(rating2);
             movie4.AddRating(rating3);
             movie4.AddRating(rating4);
+
+            // === SEED ROLES
+            Role WilliamWallace = new Role(_roleIdCounter, "William Wallace", actor1, movie1);
+            Role ForrestGump = new Role(_roleIdCounter, "Forrest Gump", actor2, movie2);
+            Role BryanMills = new Role(_roleIdCounter, "Bryan Mills", actor3, movie3);
+            Role BrandWalsh = new Role(_roleIdCounter, "Brand Walsh", actor4, movie4);
+
+            Roles.Add(WilliamWallace);
+            Roles.Add(ForrestGump);
+            Roles.Add(BryanMills);
+            Roles.Add(BrandWalsh);
+
+            movie1.AddRole(WilliamWallace);
+            movie2.AddRole(ForrestGump);
+            movie3.AddRole(BryanMills);
+            movie4.AddRole(BrandWalsh);
+
+            actor1.AddRole(WilliamWallace);
+            actor2.AddRole(ForrestGump);
+            actor3.AddRole(BryanMills);
+            actor4.AddRole(BrandWalsh);
+
         }
 
         static Context()

@@ -41,8 +41,17 @@ namespace LAB_01.Models
         }
 
         private HashSet<Movie> _movies = new HashSet<Movie>();
+        private HashSet<Role> _roles = new HashSet<Role>();
 
         // === METHODS
+        public HashSet<Role> GetRoles()
+        {
+            return _roles.ToHashSet();
+        }
+        public void AddRole(Role role)
+        {
+            _roles.Add(role);
+        }
         public HashSet<Movie> GetMoviesOfActor()
         {
             return _movies.ToHashSet();
