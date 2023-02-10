@@ -20,6 +20,13 @@ else
                     <i>@movie.Title</i>
                 }
             </li>
+            <li class="list-group-item">
+                <b>Roles:</b>
+                @foreach (Role role in actor.GetRoles())
+                {
+                    <i>@role.Part (@role.Movie.Title)</i>
+                }
+            </li>
         </ul>
         <br />
     }

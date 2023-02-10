@@ -27,9 +27,9 @@
         </li>
         <li class="list-group-item">
             <b>Starring:</b>
-            @foreach (Actor actor in Model.GetActors())
+            @foreach (Role role in Model.GetRoles())
             {
-                <i>@actor.Name</i>
+                <i>@role.Actor.Name as "@role.Part"</i>
             }
         </li>
         <li class="list-group-item"><b>Production Date:</b> @Model.ProductionDate</li>

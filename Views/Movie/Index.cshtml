@@ -31,9 +31,9 @@
                 </li>
                 <li class="list-group-item">
                     <b>Starring:</b> 
-                    @foreach(Actor actor in movie.GetActors())
+                    @foreach (Role role in movie.GetRoles())
                     {
-                        <i>@actor.Name</i>
+                        <i>@role.Actor.Name as "@role.Part"</i>
                     }
                 </li>
                 <li class="list-group-item"><b>Production Date:</b> @movie.ProductionDate</li>
