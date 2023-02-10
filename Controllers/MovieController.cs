@@ -12,6 +12,17 @@ namespace LAB_01.Controllers
             return View(Context.Movies);
         }
 
+        public IActionResult Details(int id)
+        {
+            Movie movie = Context.Movies.First(m =>
+            {
+                return m.Id == id;
+            });
+
+            ViewBag.PageTitle = $"{movie.Title}";
+            return View(movie);
+        }
+
         public IActionResult GetMovieInfo(string title)
         {
             Movie movie = Context.Movies.First(m =>
