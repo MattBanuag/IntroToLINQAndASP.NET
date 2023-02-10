@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Actor>;
+
+@if (Model.Count() <= 0)
+{
+    <h2>No actors to show.</h2>
+}
+else
+{
+    <h2>@ViewBag.PageTitle</h2>
+
+    @foreach(Actor actor in Model)
+    {
+        <ul class="list-group">
+            <h5 class="list-group-item text-primary"><b>@actor.Name</b></h5>
+            <li class="list-group-item"><b>Salary:</b> $@actor.Salary</li>
+            <li class="list-group-item">
+                <b>Movies:</b>
+                @foreach (Movie movie in actor.GetMoviesOfActor())
+                {
+                    <i>@movie.Title</i>
+                }
+            </li>
+        </ul>
+        <br />
+    }
+}
