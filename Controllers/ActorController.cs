@@ -23,7 +23,8 @@ namespace LAB_01.Controllers
                 return a.Id == id;
             });
 
-            return View();
+            ViewBag.PageTitle = $"{actor.Name}";
+            return View(actor);
         }
     }
 }
