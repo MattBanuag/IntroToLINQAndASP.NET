@@ -27,4 +27,16 @@ else
         </li>
     </ul>
     <br />
+
+    <h3>Ratings and comments from other users</h3>
+    @foreach (Rating rating in Model.GetRatings())
+    {
+        <b>@rating.Score / 10</b>
+        <i> ~ "@rating.Comment"</i>
+        <p />
+    }
+
+    <form asp-controller="Actor" asp-action="CreateRating" method="GET">
+        <button type="submit" class="btn-success">Add a rating</button>
+    </form>
 }

@@ -42,6 +42,7 @@ namespace LAB_01.Models
 
         private HashSet<Movie> _movies = new HashSet<Movie>();
         private HashSet<Role> _roles = new HashSet<Role>();
+        private HashSet<Rating> _ratings = new HashSet<Rating>();
 
         // === METHODS
         public HashSet<Role> GetRoles()
@@ -52,6 +53,15 @@ namespace LAB_01.Models
         {
             _roles.Add(role);
         }
+        public HashSet<Rating> GetRatings()
+        {
+            return _ratings.ToHashSet();
+        }
+        public void AddRating(Rating rating)
+        {
+            _ratings.Add(rating);
+        }
+
         public HashSet<Movie> GetMoviesOfActor()
         {
             return _movies.ToHashSet();

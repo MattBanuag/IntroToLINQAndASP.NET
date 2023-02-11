@@ -7,7 +7,7 @@ namespace LAB_01.Controllers
 {
     public class RatingController : Controller
     {
-        public IActionResult Create()
+        public IActionResult CreateRating()
         {
             RateMovieVM vm = new RateMovieVM(Context.Movies, Context.Users);
             return View(vm);
@@ -30,7 +30,7 @@ namespace LAB_01.Controllers
                 user.AddRating(newRating);
                 Context.Ratings.Add(newRating);
 
-                return RedirectToAction("Info", "Movie", new { id = movie.Id });
+                return RedirectToAction("Details", "Movie", new { id = movie.Id });
             }
             catch (Exception ex)
             {

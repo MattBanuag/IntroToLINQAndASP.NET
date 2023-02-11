@@ -41,6 +41,7 @@ namespace LAB_01.Models
 
         private HashSet<User> _users = new HashSet<User>();
         private HashSet<Movie> _movies = new HashSet<Movie>();
+        private HashSet<Actor> _actors = new HashSet<Actor>();
 
         // === CONSTRUCTORS
         public Rating(int id, int score, User user, Movie movie, string comment)
@@ -49,6 +50,15 @@ namespace LAB_01.Models
             Score = score;
             _users.Add(user);
             _movies.Add(movie);
+            Comment = comment;
+        }
+
+        public Rating(int id, int score, User user, Actor actor, string comment)
+        {
+            _id = id;
+            Score = score;
+            _users.Add(user);
+            _actors.Add(actor);
             Comment = comment;
         }
     }
