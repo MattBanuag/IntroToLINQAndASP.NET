@@ -77,5 +77,11 @@ namespace LAB_01.Controllers
 
             return View("Index", movies);
         }
+
+        [HttpGet] // GET VIEW
+        public IActionResult CompareMovies()
+        {
+            return View();
+        }
     }
 }
