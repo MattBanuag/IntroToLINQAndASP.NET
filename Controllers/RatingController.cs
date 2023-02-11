@@ -23,7 +23,6 @@ namespace LAB_01.Controllers
                 int score = vm.Score;
                 string comment = vm.Comment;
 
-                // Create new rating and add to Context/Actor relationships
                 Rating newRating = new Rating(Context.RatingIdCounter++, score, user, movie, comment);
 
                 movie.AddRating(newRating);
