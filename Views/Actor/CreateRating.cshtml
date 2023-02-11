@@ -1,0 +1,19 @@
+﻿@model LAB_01.Models.ViewModels.RateActorVM
+
+<h2>Add rating</h2>
+
+<form asp-action="Create" method="POST">
+    <div>
+        <select asp-for="UserId" asp-items="Model.Users"></select>
+    </div>
+
+    <div>
+        <select asp-for="ActorId" asp-items="Model.Actors"></select>
+    </div>
+
+    <input asp-for="Score" type="number" placeholder="Rate Score"></input>
+    <p>
+        <textarea asp-for="Comment" placeholder="Comment"></textarea>
+    <p>
+        <input type="Submit" value="Post Rating">
+</form>   

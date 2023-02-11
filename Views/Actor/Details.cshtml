@@ -1,0 +1,42 @@
+﻿@model Actor;
+
+@if (Model == null)
+{
+    <h2>No actors to show.</h2>
+}
+else
+{
+    <h2>@ViewBag.PageTitle</h2>
+
+    <ul class="list-group">
+        <h5 class="list-group-item text-primary"><b>@Model.Name</b></h5>
+        <li class="list-group-item"><b>Salary:</b> $@Model.Salary</li>
+        <li class="list-group-item">
+            <b>Movies:</b>
+            @foreach (Movie movie in Model.GetMoviesOfActor())
+            {
+                <i>@movie.Title</i>
+            }
+        </li>
+        <li class="list-group-item">
+            <b>Roles:</b>
+            @foreach (Role role in Model.GetRoles())
+            {
+                <i>@role.Part (@role.Movie.Title)</i>
+            }
+        </li>
+    </ul>
+    <br />
+
+    <h3>Ratings and comments from other users</h3>
+    @foreach (Rating rating in Model.GetRatings())
+    {
+        <b>@rating.Score / 10</b>
+        <i> ~ "@rating.Comment"</i>
+        <p />
+    }
+
+    <form asp-controller="Actor" asp-action="CreateRating" method="GET">
+        <button type="submit" class="btn-success">Add a rating</button>
+    </form>
+}

@@ -1,0 +1,52 @@
+﻿@model Movie;
+
+@if(Model == null) {
+    <h2 class="text-danger">Movie could not be found.</h2>
+} else {
+    <h2>@ViewBag.PageTitle</h2>
+
+    <ul class="list-group">
+        <h5 class="list-group-item text-primary"><b>@Model.Title</b></h5>
+        <li class="list-group-item"><b>Genre:</b> @Model.Genre</li>
+        <li class="list-group-item">
+            <b>Rating:</b>
+            @{
+                HashSet<Rating> ratings = Model.GetRatings();
+
+                if (ratings.Any())
+                {
+                    <i>
+                        @decimal.Round(ratings.Average(r => (decimal)r.Score),2) / 10
+                    </i>
+                }
+                else
+                {
+                    <i>Not Available</i>
+                }
+            }
+        </li>
+        <li class="list-group-item">
+            <b>Starring:</b>
+            @foreach (Role role in Model.GetRoles())
+            {
+                <i>@role.Actor.Name as "@role.Part"</i>
+            }
+        </li>
+        <li class="list-group-item"><b>Production Date:</b> @Model.ProductionDate</li>
+        <li class="list-group-item"><b>Budget(EST):</b> $@Model.Budget</li>
+    </ul>
+    <br/>
+
+    <h3>Ratings and comments from other users</h3>
+    @foreach (Rating rating in Model.GetRatings())
+    {
+            <b>@rating.Score / 10</b> 
+            <i> ~ "@rating.Comment"</i>
+            <br/>
+    }
+
+    <form asp-controller="Rating" asp-action="CreateRating" method="GET">
+        <button type="submit" class="btn-success">Add a rating</button>
+    </form>
+      
+}
