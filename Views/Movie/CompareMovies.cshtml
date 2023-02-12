@@ -1,33 +1,31 @@
 ﻿@model LAB_01.Models.ViewModels.CompareMoviesVM
 
-<!-- COMPARING MOVIES -->
-<h2>Compare movies</h2>
-
-<form asp-action="CompareMovies" method="POST">
-    <div>
-        <label asp-for="FirstMovieId">Movie 1: </label>
-        <select asp-for="FirstMovieId" asp-items="Model.FirstListOfMovies"></select>
-    </div>
-    <p></p>
-    <div>
-        <label asp-for="SecondMovieId">Movie 2: </label>
-        <select asp-for="SecondMovieId" asp-items="Model.SecondListOfMovies"></select>
-    </div>
-    <p></p>
-    <input type="Submit" value="Compare Movies">
-</form>
-
-
 @if (Model.FirstSelectedMovie != null && Model.SecondSelectedMovie != null)
 {
+    <!-- COMPARING MOVIES -->
+    <h2>Compare movies</h2>
+
+    <form asp-action="CompareMovies" method="POST">
+        <div>
+            <label asp-for="FirstMovieId">Movie 1: </label>
+            <select asp-for="FirstMovieId" asp-items="Model.FirstListOfMovies"></select>
+        </div>
+        <p></p>
+        <div>
+            <label asp-for="SecondMovieId">Movie 2: </label>
+            <select asp-for="SecondMovieId" asp-items="Model.SecondListOfMovies"></select>
+        </div>
+        <p></p>
+        <input type="Submit" value="Compare Movies">
+    </form>
+
+    <p></p>
+
     <!-- FIRST MOVIE -->
     <h2>First Movie:</h2>
     <ul class="list-group">
         <h5>@Model.FirstSelectedMovie.Title</h5>
         <li class="list-group-item"><b>Genre:</b> @Model.FirstSelectedMovie.Genre</li>
-
-    </ul>
-
     <li class="list-group-item">
         <b>Rating:</b>
         @{
@@ -58,46 +56,65 @@
         <b>Budget(EST):</b>
         $@Model.FirstSelectedMovie.Budget
     </li>
+    </ul>
+
 
     <!-- SECOND MOVIE -->
     <h2>Second Movie:</h2>
     <ul class="list-group">
         <h5>@Model.SecondSelectedMovie.Title</h5>
         <li class="list-group-item"><b>Genre:</b> @Model.SecondSelectedMovie.Genre</li>
+        <li class="list-group-item">
+            <b>Rating:</b>
+            @{
+                HashSet<Rating> secondMovieRatings = Model.FirstSelectedMovie.GetRatings();
 
+                if (secondMovieRatings.Any())
+                {
+                    <i>@decimal.Round(secondMovieRatings.Average(r => (decimal)r.Score),2) / 10</i>
+                }
+                else
+                {
+                    <i>No Ratings</i>
+                }
+            }
+        </li>
+        <li class="list-group-item">
+            <b>Starring:</b>
+            @foreach (Role role in Model.SecondSelectedMovie.GetRoles())
+            {
+                <i>@role.Actor.Name as "@role.Part"</i>
+            }
+        </li>
+        <li class="list-group-item">
+            <b>Production Date:</b>
+            @Model.SecondSelectedMovie.ProductionDate
+        </li>
+        <li class="list-group-item">
+            <b>Budget(EST):</b>
+            $@Model.SecondSelectedMovie.Budget
+        </li>
     </ul>
-
-    <li class="list-group-item">
-        <b>Rating:</b>
-        @{
-            HashSet<Rating> secondMovieRatings = Model.FirstSelectedMovie.GetRatings();
-
-            if (secondMovieRatings.Any())
-            {
-                <i>@decimal.Round(secondMovieRatings.Average(r => (decimal)r.Score),2) / 10</i>
-            }
-            else
-            {
-                <i>No Ratings</i>
-            }
-        }
-    </li>
-    <li class="list-group-item">
-        <b>Starring:</b>
-        @foreach (Role role in Model.SecondSelectedMovie.GetRoles())
-        {
-            <i>@role.Actor.Name as "@role.Part"</i>
-        }
-    </li>
-    <li class="list-group-item">
-        <b>Production Date:</b>
-        @Model.SecondSelectedMovie.ProductionDate
-    </li>
-    <li class="list-group-item">
-        <b>Budget(EST):</b>
-        $@Model.SecondSelectedMovie.Budget
-    </li>
 } else {
+    <!-- COMPARING MOVIES -->
+    <h2>Compare movies</h2>
+
+    <form asp-action="CompareMovies" method="POST">
+        <div>
+            <label asp-for="FirstMovieId">Movie 1: </label>
+            <select asp-for="FirstMovieId" asp-items="Model.FirstListOfMovies"></select>
+        </div>
+        <p></p>
+        <div>
+            <label asp-for="SecondMovieId">Movie 2: </label>
+            <select asp-for="SecondMovieId" asp-items="Model.SecondListOfMovies"></select>
+        </div>
+        <p></p>
+        <input type="Submit" value="Compare Movies">
+    </form>
+
+    <p></p>
+
     <h2>No movies compared.</h2>
 }
 

@@ -80,7 +80,7 @@ namespace LAB_01.Controllers
         }
 
         [HttpGet] // GET VIEW
-        public IActionResult CompareMovies(int FirstMovieId, int SecondMovieId)
+        public IActionResult CompareMovies()
         {
             CompareMoviesVM vm = new CompareMoviesVM(Context.Movies, Context.Movies);
 
@@ -92,10 +92,14 @@ namespace LAB_01.Controllers
         {
             try
             {
+                CompareMoviesVM newVm = new CompareMoviesVM(Context.Movies, Context.Movies);
+
                 Movie firstMovie = Context.Movies.First(m => m.Id == Int32.Parse(vm.FirstMovieId));
                 Movie secondMovie = Context.Movies.First(m => m.Id == Int32.Parse(vm.SecondMovieId));
 
-                CompareMoviesVM newVm = new CompareMoviesVM(firstMovie, secondMovie);
+                newVm.FirstSelectedMovie = firstMovie;
+                newVm.SecondSelectedMovie = secondMovie;
+                
 
                 return View(newVm);
             }

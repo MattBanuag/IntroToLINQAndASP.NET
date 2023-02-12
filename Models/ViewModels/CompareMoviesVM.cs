@@ -24,12 +24,6 @@ namespace LAB_01.Models.ViewModels
             }
         }
 
-        public CompareMoviesVM(Movie firstSelectedMovie, Movie secondSelectedMovie)
-        {
-            FirstSelectedMovie = firstSelectedMovie;
-            SecondSelectedMovie = secondSelectedMovie;
-        }
-
         public CompareMoviesVM()
         {
 
