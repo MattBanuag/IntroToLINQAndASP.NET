@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LAB_01.Data;
 using LAB_01.Models;
+using LAB_01.Models.ViewModels;
 
 namespace LAB_01.Controllers
 {
@@ -81,7 +82,9 @@ namespace LAB_01.Controllers
         [HttpGet] // GET VIEW
         public IActionResult CompareMovies()
         {
-            return View();
+            CompareMoviesVM vm = new CompareMoviesVM(Context.Movies, Context.Movies);
+
+            return View(vm);
         }
     }
 }

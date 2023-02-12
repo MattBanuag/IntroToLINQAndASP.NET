@@ -1,0 +1,20 @@
+﻿@model LAB_01.Models.ViewModels.CompareMoviesVM
+
+<!-- COMPARING MOVIES -->
+<h2>Compare movies</h2>
+
+<form asp-action="CompareMovies" method="POST">
+    <div>
+        <label asp-for="FirstMovieId">Movie 1: </label>
+        <select asp-for="FirstMovieId" asp-items="Model.FirstListOfMovies"></select>
+    </div>
+    <p></p>
+    <div>
+        <label asp-for="SecondMovieId">Movie 2: </label>
+        <select asp-for="SecondMovieId" asp-items="Model.SecondListOfMovies"></select>
+    </div>
+    <p></p>
+    <input type="Submit" value="Compare Movies">
+</form>
+
+
