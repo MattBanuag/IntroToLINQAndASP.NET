@@ -80,11 +80,29 @@ namespace LAB_01.Controllers
         }
 
         [HttpGet] // GET VIEW
-        public IActionResult CompareMovies()
+        public IActionResult CompareMovies(int FirstMovieId, int SecondMovieId)
         {
             CompareMoviesVM vm = new CompareMoviesVM(Context.Movies, Context.Movies);
 
             return View(vm);
+        }
+
+        [HttpPost] // POST
+        public IActionResult CompareMovies([Bind("FirstMovieId", "SecondMovieId")] CompareMoviesVM vm)
+        {
+            try
+            {
+                Movie firstMovie = Context.Movies.First(m => m.Id == Int32.Parse(vm.FirstMovieId));
+                Movie secondMovie = Context.Movies.First(m => m.Id == Int32.Parse(vm.SecondMovieId));
+
+                CompareMoviesVM newVm = new CompareMoviesVM(firstMovie, secondMovie);
+
+                return View(newVm);
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
         }
     }
 }

@@ -18,3 +18,86 @@
 </form>
 
 
+@if (Model.FirstSelectedMovie != null && Model.SecondSelectedMovie != null)
+{
+    <!-- FIRST MOVIE -->
+    <h2>First Movie:</h2>
+    <ul class="list-group">
+        <h5>@Model.FirstSelectedMovie.Title</h5>
+        <li class="list-group-item"><b>Genre:</b> @Model.FirstSelectedMovie.Genre</li>
+
+    </ul>
+
+    <li class="list-group-item">
+        <b>Rating:</b>
+        @{
+            HashSet<Rating> firstMovieRatings = Model.FirstSelectedMovie.GetRatings();
+
+            if (firstMovieRatings.Any())
+            {
+                <i>@decimal.Round(firstMovieRatings.Average(r => (decimal)r.Score),2) / 10</i>
+            }
+            else
+            {
+                <i>No Ratings</i>
+            }
+        }
+    </li>
+    <li class="list-group-item">
+        <b>Starring:</b>
+        @foreach (Role role in Model.FirstSelectedMovie.GetRoles())
+        {
+            <i>@role.Actor.Name as "@role.Part"</i>
+        }
+    </li>
+    <li class="list-group-item">
+        <b>Production Date:</b>
+        @Model.FirstSelectedMovie.ProductionDate
+    </li>
+    <li class="list-group-item">
+        <b>Budget(EST):</b>
+        $@Model.FirstSelectedMovie.Budget
+    </li>
+
+    <!-- SECOND MOVIE -->
+    <h2>Second Movie:</h2>
+    <ul class="list-group">
+        <h5>@Model.SecondSelectedMovie.Title</h5>
+        <li class="list-group-item"><b>Genre:</b> @Model.SecondSelectedMovie.Genre</li>
+
+    </ul>
+
+    <li class="list-group-item">
+        <b>Rating:</b>
+        @{
+            HashSet<Rating> secondMovieRatings = Model.FirstSelectedMovie.GetRatings();
+
+            if (secondMovieRatings.Any())
+            {
+                <i>@decimal.Round(secondMovieRatings.Average(r => (decimal)r.Score),2) / 10</i>
+            }
+            else
+            {
+                <i>No Ratings</i>
+            }
+        }
+    </li>
+    <li class="list-group-item">
+        <b>Starring:</b>
+        @foreach (Role role in Model.SecondSelectedMovie.GetRoles())
+        {
+            <i>@role.Actor.Name as "@role.Part"</i>
+        }
+    </li>
+    <li class="list-group-item">
+        <b>Production Date:</b>
+        @Model.SecondSelectedMovie.ProductionDate
+    </li>
+    <li class="list-group-item">
+        <b>Budget(EST):</b>
+        $@Model.SecondSelectedMovie.Budget
+    </li>
+} else {
+    <h2>No movies compared.</h2>
+}
+

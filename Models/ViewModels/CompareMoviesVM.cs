@@ -6,8 +6,10 @@ namespace LAB_01.Models.ViewModels
     {
         public List<SelectListItem> FirstListOfMovies { get; } = new List<SelectListItem>();
         public List<SelectListItem> SecondListOfMovies { get; } = new List<SelectListItem>();
-        public int FirstMovieId { get; set; }
-        public int SecondMovieId { get; set; }
+        public string FirstMovieId { get; set; }
+        public string SecondMovieId { get; set; }
+        public Movie FirstSelectedMovie { get; set; }
+        public Movie SecondSelectedMovie { get; set; }
 
         public CompareMoviesVM(HashSet<Movie> firstListOfMovies, HashSet<Movie> secondListOfMovies)
         {
@@ -20,6 +22,12 @@ namespace LAB_01.Models.ViewModels
             {
                 SecondListOfMovies.Add(new SelectListItem(m.Title, m.Id.ToString()));
             }
+        }
+
+        public CompareMoviesVM(Movie firstSelectedMovie, Movie secondSelectedMovie)
+        {
+            FirstSelectedMovie = firstSelectedMovie;
+            SecondSelectedMovie = secondSelectedMovie;
         }
 
         public CompareMoviesVM()
